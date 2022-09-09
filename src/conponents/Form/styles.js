@@ -1,76 +1,71 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
-  box-sizing: border-box;
-  width: 836px;
-  height: 763px;
-  background-color: #ffffff;
-  border: 1px solid #dbdbdb;
-  border-radius: 20px;
-  padding: 32px;
-  margin-bottom: 10px;
-`;
-Wrapper.displayName = "TransactionWrapper";
-
 export const FormBody = styled.div`
   display: flex;
   flex-direction: column;
   align-items: start;
-  width: 772px;
-  height: 496px;
   background-color: #f6f8fd;
-  border: 1px solid #dbdbdb;
-  border-radius: 3px;
-  padding: 48px 100px;
-  margin-bottom: 10px;
+  border-radius: 8px;
+  padding: 48px 100px 128px;
 `;
 FormBody.displayName = "FormBody";
 
 export const InputText = styled.input.attrs({ type: "text" })`
-  border-radius: 3px;
-  padding: 11px 16px;
   width: 100%;
-  margin-bottom: 16px;
+  height: 42px;
+  border-radius: 4px;
+  padding: 12px 14px 12px 16px;
   border: 1px solid #ecf0f5;
   outline: none;
-  font-family: "Rubik";
   font-size: 14px;
   line-height: 18px;
+  color: #aab4bd;
 `;
 InputText.displayName = "InputText";
+
+export const InputTextList = styled.ul`
+  list-style: none;
+  width: 100%;
+  margin-bottom: 36px;
+`;
+InputTextList.displayName = "InputTextList";
+
+export const InputTextItem = styled.li`
+  &:not(:last-child) {
+    margin-bottom: 16px;
+  }
+`;
+InputTextItem.displayName = "InputTextItem";
+
+export const CheckBoxList = styled.ul`
+  list-style: none;
+  margin-bottom: 24px;
+`;
+CheckBoxList.displayName = "CheckBoxList";
+
+export const CheckBoxItem = styled.li`
+  &:not(:last-child) {
+    margin-bottom: 12px;
+  }
+`;
+CheckBoxItem.displayName = "CheckBoxItem";
 
 export const InputFile = styled.input.attrs({ type: "file" })`
   width: 150px;
   height: 40px;
-  margin-top: 16px;
   margin-left: 33px;
   visibility: hidden;
-  // &::-webkit-file-upload-button {
-  //   visibility: hidden;
-  // }
 
-  &:: before {
+  &::before {
     visibility: visible;
     color: #505b67;
     content: "Select file...";
     display: flex;
     align-items: center;
     justify-content: center;
-    // background: linear-gradient(top, #f9f9f9, #e3e3e3);
-    // border: 1px solid #999;
-    // border-radius: 50%;
-    // padding: 5px 8px;
-    // outline: none;
-    // white-space: nowrap;
-    // -webkit-user-select: none;
-    // cursor: pointer;
-    // text-shadow: 1px 1px #fff;
-    // font-weight: 700;
-    // font-size: 10pt;
 
     box-sizing: border-box;
 
-    // position: absolute;
     width: 150px;
     height: 40px;
     left: 133px;

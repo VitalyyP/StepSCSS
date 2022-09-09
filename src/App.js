@@ -1,39 +1,36 @@
 import React, { useState } from "react";
 
+import Home from "./pages/Home";
 import Modal from "../src/conponents/Modal";
 import Title from "./conponents/Title";
 import StepList from "./conponents/StepList";
 import Form from "./conponents/Form";
+import Button from "./conponents/Button";
+import Flex from "./conponents/Flex";
 
 function App() {
-  // const [searchValue, setSearchValue] = useState(" ");
-  const [showModal, setShowModal] = useState(false);
-  // const [modalImg, setModalImg] = useState("");
-
-  // const getSearchValues = (searchValue) => setSearchValue(searchValue);
+  const [showModal, setShowModal] = useState(true);
 
   const toggleModal = () => {
     setShowModal(!showModal);
   };
 
-  const openModal = (e) => {
-    const { dataset, nodeName } = e.target;
-
-    // if (nodeName === "IMG") {
-    //   setModalImg(dataset.large);
-    //   setShowModal(!showModal);
-    // }
-  };
-
   return (
     <div className="App">
-      <Title>create stage</Title>
-      <StepList>['basic configuration', 'team/votes', 'feedback']</StepList>
-      <Form />
+      <Home openModal={toggleModal} />
       {showModal && (
-        <Modal onClose={toggleModal}>
-          {/* <img src={modalImg} alt="" /> */}
-        </Modal>
+        <>
+          <Modal onClose={toggleModal}>
+            <Title>create stage</Title>
+            <StepList>
+              ['basic configuration', 'team/votes', 'feedback']
+            </StepList>
+            <Form />
+            <Flex margin="39px 0 0 0" justify="end">
+              <Button>Next</Button>
+            </Flex>
+          </Modal>
+        </>
       )}
     </div>
   );

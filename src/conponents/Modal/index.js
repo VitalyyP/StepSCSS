@@ -2,16 +2,19 @@ import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { createPortal } from "react-dom";
 
-const modalRoot = document.querySelector("#modal-root");
+import { Overlay, ModalContent, ModalClose } from "./styles";
+
+const modalRoot = document.createElement("div");
 
 export default function Modal({ onClose, children }) {
   useEffect(() => {
+    document.body.appendChild(modalRoot);
     window.addEventListener("keydown", handleKeyDown);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     return () => {
+      document.body.removeChild(modalRoot);
       window.removeEventListener("keydown", handleKeyDown);
     };
   });
@@ -29,9 +32,12 @@ export default function Modal({ onClose, children }) {
   }
 
   return createPortal(
-    <div className="Overlay" onClick={handleBackdropClick}>
-      <div className="Modal">{children}</div>
-    </div>,
+    <Overlay onClick={handleBackdropClick}>
+      <ModalContent>
+        {children}
+        <ModalClose onClick={() => onClose()}>close</ModalClose>
+      </ModalContent>
+    </Overlay>,
     modalRoot
   );
 }

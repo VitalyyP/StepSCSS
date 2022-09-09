@@ -3,24 +3,22 @@ import styled from "styled-components";
 export const List = styled.ul`
   list-style: none;
   display: flex;
-  margin: 0;
+  margin: 0 0 24px 0;
   padding: 0;
   counter-reset: my-counter; /* Задаём имя счетчика */
 `;
 List.displayName = "List";
 
 export const Step = styled.li`
-  font-family: "Rubik";
-  font-style: normal;
-  font-weight: 500;
   font-size: 16px;
   line-height: 20px;
+  font-weight: 500;
   text-transform: capitalize;
+  color: #505b67;
 
   position: relative;
   display: flex;
   align-items: center;
-  margin-bottom: 12px;
 
   &:not(:first-child) {
     margin-left: 80px;
@@ -37,7 +35,7 @@ export const Step = styled.li`
   &::before {
     width: 32px;
     height: 32px;
-    margin-right: 9px;
+    margin-right: 13px;
     content: counter(my-counter); /* Выводим число */
     counter-increment: my-counter; /* Увеличиваем значение счётчика */
     background-color: #ecf0f5;
