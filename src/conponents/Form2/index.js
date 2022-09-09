@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 
 import Checkbox from "../Checkbox/";
-import PropTypes from "prop-types";
+import Flex from "../Flex";
+import Select from "../Select";
+import Counter from "../Counter";
 import {
   InputText,
   InputTextList,
@@ -9,11 +12,12 @@ import {
   CheckBoxList,
   CheckBoxItem,
   InputFile,
-  Button,
   FormBody,
+  TeamTitle,
+  VotesTitle,
 } from "./styles";
 
-const Form = (props) => {
+const Form2 = (props) => {
   const [form, setForm] = useState({});
 
   const onSubmit = (e) => {
@@ -49,7 +53,21 @@ const Form = (props) => {
   return (
     <form onSubmit={onSubmit}>
       <FormBody>
-        <InputTextList>
+        <TeamTitle>Team</TeamTitle>
+        <Flex width="100%" justify="space-between">
+          <Select width="200px" name="designs" id="design-select">
+            <option value="">Design</option>
+            <option value="dog">Another design</option>
+          </Select>
+
+          <Counter></Counter>
+          <Select width="240px" name="designs" id="design-select">
+            <option value="">Design</option>
+            <option value="dog">Another design</option>
+          </Select>
+        </Flex>
+        <VotesTitle>Votes</VotesTitle>
+        {/* <InputTextList>
           <InputTextItem>
             <InputText
               type="text"
@@ -90,13 +108,13 @@ const Form = (props) => {
             </Checkbox>
           </CheckBoxItem>
         </CheckBoxList>
-        <InputFile />
+        <InputFile /> */}
       </FormBody>
     </form>
   );
 };
-Form.propTypes = {
-  onChange: PropTypes.func,
-};
+// Form1.propTypes = {
+//   onChange: PropTypes.func,
+// };
 
-export default Form;
+export default Form2;
