@@ -9,9 +9,47 @@ export const Wrapper = styled.div`
   background: #ffffff;
 `;
 
-export const FalseButton = styled.div`
+export const Minus = styled.div`
+  position: relative;
   width: 36px;
   height: 44px;
+  cursor: pointer;
+  &::before {
+    position: absolute;
+    top: 21px;
+    left: 14px;
+    width: 8px;
+    height: 2px;
+    content: "";
+    background-color: #3974f6;
+    border-radius: 1px;
+  }
+`;
+
+export const Plus = styled.div`
+  position: relative;
+  width: 36px;
+  height: 44px;
+  cursor: pointer;
+  &::after,
+  &::before {
+    position: absolute;
+    content: "";
+    background-color: #3974f6;
+    border-radius: 1px;
+  }
+  &::before {
+    width: 8px;
+    height: 2px;
+    top: 21px;
+    left: 14px;
+  }
+  &::after {
+    top: 18px;
+    left: 17px;
+    width: 2px;
+    height: 8px;
+  }
 `;
 
 export const Middle = styled.div`

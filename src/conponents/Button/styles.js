@@ -1,7 +1,6 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const ButtonStyled = styled.button`
-  /* display: inline-block; */
   width: 150px;
   height: 40px;
   background-color: #4ec970;
@@ -13,5 +12,13 @@ export const ButtonStyled = styled.button`
   font-size: 16px;
   line-height: 20px;
   text-align: center;
+
+  ${(props) =>
+    props.simple &&
+    css`
+      color: #505b67;
+      border: 2px solid #5a9cff;
+      border-radius: 30px;
+      background-color: transparent;
+    `}
 `;
-ButtonStyled.displayName = "ButtonStyled";
