@@ -12,7 +12,7 @@ export const LabelRadio = styled.label`
   display: flex;
   align-items: center;
   color: #828282;
-
+  cursor: pointer;
   &::before {
     margin-right: 10px;
     top: 4px;

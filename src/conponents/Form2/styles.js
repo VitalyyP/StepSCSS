@@ -21,13 +21,6 @@ export const TeamTitle = styled.h3`
   color: #505b67;
 `;
 
-export const VotesTitle = styled(TeamTitle)`
-  margin-top: 80px;
-  margin-bottom: 26px;
-  font-size: 14px;
-  line-height: 18px;
-`;
-
 export const Area = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -119,10 +112,16 @@ export const DashedLine = styled.div`
   border-bottom: 1px dashed #aab4bd;
 `;
 
+export const VotesTitle = styled(TeamTitle)`
+  margin-top: 80px;
+  margin-bottom: 26px;
+  font-size: 14px;
+  line-height: 18px;
+`;
+
 export const CheckboxForVoteList = styled.ul`
   list-style: none;
   width: 100%;
-  /* margin-bottom: 24px; */
 `;
 
 export const CheckboxForVoteItem = styled.li`

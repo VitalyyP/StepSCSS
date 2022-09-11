@@ -2,19 +2,17 @@ import styled from "styled-components";
 import icon from "../../images/icons/checkbox.svg";
 
 export const CheckboxContainer = styled.div``;
-CheckboxContainer.displayName = "CheckboxContainer";
 
 export const InputCheckbox = styled.input.attrs({ type: "checkbox" })`
   position: absolute;
   appearance: none;
 `;
-InputCheckbox.displayName = "InputCheckbox";
 
 export const LabelCheckbox = styled.label`
   color: #828282;
   display: flex;
   align-items: center;
-
+  cursor: pointer;
   &::before {
     margin-right: 9px;
     top: 4px;
@@ -34,4 +32,3 @@ export const LabelCheckbox = styled.label`
       `}
   }
 `;
-LabelCheckbox.displayName = "LabelCheckbox";

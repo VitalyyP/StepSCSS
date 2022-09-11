@@ -22,10 +22,9 @@ export const LabelCheckbox = styled.label`
   justify-content: space-between;
   width: 100%;
   color: #828282;
-
+  cursor: pointer;
   &::after {
     position: absolute;
-
     margin-right: 9px;
     top: 6px;
     right: 51px;

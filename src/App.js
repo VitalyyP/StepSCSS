@@ -6,6 +6,7 @@ import Title from "./conponents/Title";
 import StepList from "./conponents/StepList";
 import Form1 from "./conponents/Form1";
 import Form2 from "./conponents/Form2";
+import Form3 from "./conponents/Form3";
 import Button from "./conponents/Button";
 import Flex from "./conponents/Flex";
 
@@ -26,7 +27,7 @@ function App() {
             <StepList>
               ['basic configuration', 'team/votes', 'feedback']
             </StepList>
-            <Form2 />
+            <Form1 />
             <Flex margin="39px 0 0 0" justify="end">
               <Button>Next</Button>
             </Flex>

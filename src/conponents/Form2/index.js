@@ -8,16 +8,16 @@ import Button from "../Button";
 import Radio from "../Radio";
 import CheckboxForVote from "../CheckboxForVote";
 import {
-  CheckboxForVoteList,
-  CheckboxForVoteItem,
   FormBody,
   TeamTitle,
-  VotesTitle,
   Area,
   Card,
   DeleteMark,
   AddCard,
   DashedLine,
+  VotesTitle,
+  CheckboxForVoteList,
+  CheckboxForVoteItem,
 } from "./styles";
 
 const Form2 = (props) => {

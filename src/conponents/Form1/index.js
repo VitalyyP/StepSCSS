@@ -1,15 +1,16 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 
 import Checkbox from "../Checkbox/";
-import PropTypes from "prop-types";
+import InputTextWithHelperText from "../InputTextWithHelperText";
 import {
-  InputText,
+  FormBody,
   InputTextList,
   InputTextItem,
+  InputText,
   CheckBoxList,
   CheckBoxItem,
   InputFile,
-  FormBody,
 } from "./styles";
 
 const Form1 = (props) => {
@@ -75,6 +76,9 @@ const Form1 = (props) => {
               value={form.value}
               onChange={onChange}
             />
+          </InputTextItem>
+          <InputTextItem>
+            <InputTextWithHelperText>Stage Type</InputTextWithHelperText>
           </InputTextItem>
         </InputTextList>
         <CheckBoxList>

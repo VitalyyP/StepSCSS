@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const FormBody = styled.div`
+  position: relative;
+  width: 772px;
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -8,7 +10,18 @@ export const FormBody = styled.div`
   border-radius: 8px;
   padding: 48px 100px 128px;
 `;
-FormBody.displayName = "FormBody";
+
+export const InputTextList = styled.ul`
+  list-style: none;
+  width: 100%;
+  margin-bottom: 36px;
+`;
+
+export const InputTextItem = styled.li`
+  &:not(:last-child) {
+    margin-bottom: 16px;
+  }
+`;
 
 export const InputText = styled.input.attrs({ type: "text" })`
   width: 100%;
@@ -21,41 +34,24 @@ export const InputText = styled.input.attrs({ type: "text" })`
   line-height: 18px;
   color: #aab4bd;
 `;
-InputText.displayName = "InputText";
-
-export const InputTextList = styled.ul`
-  list-style: none;
-  width: 100%;
-  margin-bottom: 36px;
-`;
-InputTextList.displayName = "InputTextList";
-
-export const InputTextItem = styled.li`
-  &:not(:last-child) {
-    margin-bottom: 16px;
-  }
-`;
-InputTextItem.displayName = "InputTextItem";
 
 export const CheckBoxList = styled.ul`
   list-style: none;
   margin-bottom: 24px;
 `;
-CheckBoxList.displayName = "CheckBoxList";
 
 export const CheckBoxItem = styled.li`
   &:not(:last-child) {
     margin-bottom: 12px;
   }
 `;
-CheckBoxItem.displayName = "CheckBoxItem";
 
 export const InputFile = styled.input.attrs({ type: "file" })`
   width: 150px;
   height: 40px;
   margin-left: 33px;
   visibility: hidden;
-
+  cursor: pointer;
   &::before {
     visibility: visible;
     color: #505b67;
@@ -74,7 +70,6 @@ export const InputFile = styled.input.attrs({ type: "file" })`
     border-radius: 30px;
   }
 `;
-InputFile.displayName = "InputFile";
 
 export const Button = styled.button`
   border: 1px solid #dbdbdb;
@@ -93,4 +88,3 @@ export const Button = styled.button`
     cursor: pointer;
   }
 `;
-Button.displayName = "Button";
