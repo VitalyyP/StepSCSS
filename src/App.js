@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
+import { AppContext } from "./providers";
 import Home from "./pages/Home";
 import Modal from "../src/conponents/Modal";
 import Title from "./conponents/Title";
@@ -12,9 +13,19 @@ import Flex from "./conponents/Flex";
 
 function App() {
   const [showModal, setShowModal] = useState(true);
+  const { state, dispatch } = useContext(AppContext);
+  const { step } = state;
 
   const toggleModal = () => {
     setShowModal(!showModal);
+  };
+
+  const setStep = () => {
+    if (state.step >= 3) {
+      setShowModal(!showModal);
+      dispatch({ type: "resetStep" });
+    }
+    dispatch({ type: "incrementStep" });
   };
 
   return (
@@ -27,9 +38,10 @@ function App() {
             <StepList>
               ['basic configuration', 'team/votes', 'feedback']
             </StepList>
-            <Form1 />
+            {step === 1 ? <Form1 /> : step === 2 ? <Form2 /> : <Form3 />}
+            {/* <Form2 /> */}
             <Flex margin="39px 0 0 0" justify="end">
-              <Button>Next</Button>
+              <Button onClick={setStep}>Next</Button>
             </Flex>
           </Modal>
         </>

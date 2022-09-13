@@ -10,17 +10,12 @@ export const InputText = styled.input.attrs({ type: "text" })`
   font-size: 14px;
   line-height: 18px;
   color: #505b67;
-  ${(props) =>
-    props.focus &&
-    `
-    height: 44px;
-    padding: 18px 14px 8px 16px;
-    `}
 `;
 
 export const LabelText = styled.label`
   position: relative;
 `;
+
 export const HelperText = styled.p`
   position: absolute;
   top: 2px;
@@ -29,13 +24,4 @@ export const HelperText = styled.p`
   font-size: 14px;
   line-height: 18px;
   color: #aab4bd;
-  ${(props) =>
-    props.focus &&
-    `
-    top: -11px;
-    font-weight: 300;
-    font-size: 10px;
-    line-height: 12px;
-      
-      `}
 `;

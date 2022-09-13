@@ -14,7 +14,7 @@ export const LabelCheckbox = styled.label`
   align-items: center;
   cursor: pointer;
   &::before {
-    margin-right: 9px;
+    margin-right: 8px;
     top: 4px;
     left: 0;
     content: "";

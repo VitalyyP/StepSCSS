@@ -1,5 +1,6 @@
-import styled from "styled-components";
-import icon from "../../images/icons/star1.svg";
+import styled, { css } from "styled-components";
+import iconOutlined from "../../images/icons/starOutlined.svg";
+import iconFilled from "../../images/icons/starFilled.svg";
 
 export const Wrapper = styled.div`
   width: 136px;
@@ -26,8 +27,16 @@ export const Stars = styled.ul`
 export const Star = styled.li`
   width: 24px;
   height: 24px;
-  background-image: url(${icon});
+  background-image: url(${iconOutlined});
   background-repeat: no-repeat;
   background-position: center;
   cursor: pointer;
+  &:hover {
+    background-image: url(${iconFilled});
+  }
+  ${(props) =>
+    props.isFilled &&
+    css`
+      background-image: url(${iconFilled});
+    `}
 `;

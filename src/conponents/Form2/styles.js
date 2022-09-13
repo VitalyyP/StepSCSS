@@ -4,6 +4,7 @@ import icon from "../../images/icons/arrowdown.svg";
 export const FormBody = styled.div`
   position: relative;
   display: flex;
+  width: 772px;
   flex-direction: column;
   align-items: start;
   background-color: #f6f8fd;
@@ -21,15 +22,16 @@ export const TeamTitle = styled.h3`
   color: #505b67;
 `;
 
-export const Area = styled.div`
+export const AreaForMembers = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 362px;
   height: 85px;
-  padding: 2px;
+  padding: 2px 2px 1px;
   border: 1px solid #ccd2e3;
   border-radius: 4px;
   background-color: #ffffff;
+  overflow: auto;
 `;
 
 export const Card = styled.div`
@@ -122,6 +124,9 @@ export const VotesTitle = styled(TeamTitle)`
 export const CheckboxForVoteList = styled.ul`
   list-style: none;
   width: 100%;
+  height: 116px;
+  max-height: 200px;
+  overflow: auto;
 `;
 
 export const CheckboxForVoteItem = styled.li`

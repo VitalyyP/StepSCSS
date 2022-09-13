@@ -1,17 +1,17 @@
-import React from "react";
+import React, { startTransition } from "react";
 
 import { Wrapper, Title, Stars, Star } from "./styles";
 
-const Rate = ({ children }) => {
+const Rate = ({ children, onClick, rate }) => {
+  const stars = [0, 1, 2, 3, 4];
   return (
     <Wrapper>
       <Title>{children}</Title>
-      <Stars>
-        <Star />
-        <Star />
-        <Star />
-        <Star />
-        <Star />
+      <Stars id={children} onClick={onClick}>
+        {stars.map((el, i) => {
+          const id = i + 1;
+          return <Star key={id} id={id} isFilled={el < rate} />;
+        })}
       </Stars>
     </Wrapper>
   );

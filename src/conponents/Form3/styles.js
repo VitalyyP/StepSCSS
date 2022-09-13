@@ -8,6 +8,9 @@ export const FormBody = styled.div`
   background-color: #f6f8fd;
   border-radius: 8px;
   padding: 32px 24px 98px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
 `;
 
 export const FeedbackTitle = styled.h3`
@@ -33,7 +36,7 @@ export const Area = styled.div`
 
 export const RadioList = styled.ul`
   list-style: none;
-  margin-bottom: 22px;
+  margin-bottom: 17px;
 `;
 
 export const RadioItem = styled.li`

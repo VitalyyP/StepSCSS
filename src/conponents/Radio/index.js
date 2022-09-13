@@ -2,10 +2,11 @@ import React from "react";
 
 import { CheckboxContainer, InputRadio, LabelRadio } from "./styles";
 
-const Radio = ({ name, children, checked }) => {
+const Radio = ({ children, votes, ...rest }) => {
+  const isChecked = votes.find((el) => el.category === children).isChecked;
   return (
-    <LabelRadio>
-      <InputRadio name={name} value={children} checked={checked} />
+    <LabelRadio isChecked={isChecked}>
+      <InputRadio {...rest} />
       {children}
     </LabelRadio>
   );

@@ -9,6 +9,7 @@ export const CheckboxContainer = styled.div`
   background-color: #ffffff;
   display: flex;
   align-items: center;
+  font-weight: 500;
 `;
 
 export const InputCheckbox = styled.input.attrs({ type: "checkbox" })`
@@ -42,4 +43,10 @@ export const LabelCheckbox = styled.label`
       background-image: url(${icon});
       `}
   }
+`;
+
+export const Span = styled.span`
+  font-size: 12px;
+  line-height: 14px;
+  color: #828282;
 `;

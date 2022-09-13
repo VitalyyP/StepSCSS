@@ -4,15 +4,16 @@ import icon from "../../images/icons/checkbox.svg";
 export const CheckboxContainer = styled.div``;
 
 export const InputRadio = styled.input.attrs({ type: "Radio" })`
-  /* position: absolute; */
   appearance: none;
 `;
 
 export const LabelRadio = styled.label`
+  position: relative;
   display: flex;
   align-items: center;
   color: #828282;
   cursor: pointer;
+
   &::before {
     margin-right: 10px;
     top: 4px;
@@ -26,9 +27,25 @@ export const LabelRadio = styled.label`
     border-radius: 50%;
 
     ${(props) =>
-      props.checked &&
+      props.isChecked &&
       `
-      border: 2px solid  #4ec970;;
+      border-color: #4ec970;;
       `}
+  }
+  &::after {
+    ${(props) =>
+      props.isChecked &&
+      `
+      position: absolute;
+    top: 5px;
+    left: 5px;
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    width: 10px;
+    height: 10px;
+    background-color: #4ec970;
+    border-radius: 50%;
+    `}
   }
 `;

@@ -1,19 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
+// import PropTypes from "prop-types";
 
+import { AppContext } from "../../providers/";
 import Flex from "../Flex";
-
 import { Wrapper, Minus, Middle, Plus, Span } from "./styles";
 
-const Counter = ({ children }) => {
+const Counter = () => {
+  const { state, dispatch } = useContext(AppContext);
   return (
     <Wrapper>
-      <Minus />
+      <Minus onClick={() => dispatch({ type: "decrementRate" })} />
       <Middle>
         <Flex height="42px">
-          <Span>1</Span>
+          <Span>{state.rate}</Span>
         </Flex>
       </Middle>
-      <Plus />
+      <Plus onClick={() => dispatch({ type: "incrementRate" })} />
     </Wrapper>
   );
 };

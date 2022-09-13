@@ -1,14 +1,22 @@
 import React from "react";
 
-import { CheckboxContainer, InputCheckbox, LabelCheckbox } from "./styles";
+import {
+  CheckboxContainer,
+  InputCheckbox,
+  LabelCheckbox,
+  Span,
+} from "./styles";
 
-const CheckboxForVote = ({ id, onCheck, form, children }) => {
+const CheckboxForVote = ({ name, onCheck, members, children }) => {
   return (
     <CheckboxContainer>
-      <LabelCheckbox name={id} checked={form[id]}>
-        <InputCheckbox type="checkbox" name={id} onChange={onCheck} />
+      <LabelCheckbox
+        name={name}
+        checked={members.find((el) => el.name === name).veto}
+      >
+        <InputCheckbox type="checkbox" name={name} onChange={onCheck} />
         {children}
-        <spant>Vote</spant>
+        <Span>Vote</Span>
       </LabelCheckbox>
     </CheckboxContainer>
   );

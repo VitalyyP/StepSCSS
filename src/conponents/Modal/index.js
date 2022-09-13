@@ -14,7 +14,7 @@ export default function Modal({ onClose, children }) {
 
   useEffect(() => {
     return () => {
-      document.body.removeChild(modalRoot);
+      // document.body.removeChild(modalRoot);
       window.removeEventListener("keydown", handleKeyDown);
     };
   });

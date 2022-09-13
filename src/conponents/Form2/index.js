@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
 
+import { AppContext } from "../../providers/";
 import Flex from "../Flex";
 import Select from "../Select";
 import Counter from "../Counter";
@@ -10,7 +11,7 @@ import CheckboxForVote from "../CheckboxForVote";
 import {
   FormBody,
   TeamTitle,
-  Area,
+  AreaForMembers,
   Card,
   DeleteMark,
   AddCard,
@@ -21,52 +22,96 @@ import {
 } from "./styles";
 
 const Form2 = (props) => {
-  const [form, setForm] = useState({});
+  const { state, dispatch } = useContext(AppContext);
+  const votes = state.votes;
+  const members = state.members;
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-    props.onChange(form);
-    setForm({
-      ...form,
-      value: "",
-      comment: "",
-    });
-    props.onCloseModalForm();
+  const onChangeOptions = (e) => {
+    const id = e.currentTarget.id;
+    const value = e.target.value;
+    const option = { [id]: value };
+    dispatch({ type: "setOption", payload: option });
   };
 
-  const onChange = (e) => {
-    console.log(e.target);
-    const { value, name } = e.target;
-    setForm({
-      ...form,
-      [name]: value,
-    });
+  const onChangeCategory = (e) => {
+    const value = e.target.value;
+    const changedVotes = votes.map((el) => ({
+      ...el,
+      isChecked: el.category === value,
+    }));
+    dispatch({ type: "setCategory", payload: changedVotes });
   };
 
   const onCheck = (e) => {
-    console.log(e.target.checked);
-    const { name } = e.target;
+    const name2 = e.target.name;
+    const isChecked2 = e.target.checked;
+    members.find((el) => el.name === name2).veto = isChecked2;
+    dispatch({ type: "setMember", payload: members });
+  };
 
-    setForm({
-      ...form,
-      [name]: e.target.checked,
-    });
+  const addMember = () => {
+    const name = prompt(`Enter member's name`);
+    if (!name) return;
+    const id = Date.now();
+    members.push({ id, name, veto: false });
+    dispatch({ type: "setMember", payload: members });
+  };
+
+  const removeMember = (e) => {
+    if (e.currentTarget === e.target) return;
+    const name = e.currentTarget.textContent;
+    const filteredMembers = members.filter((el) => el.name !== name);
+    dispatch({ type: "setMember", payload: filteredMembers });
   };
 
   return (
-    <form onSubmit={onSubmit}>
+    <form>
       <FormBody>
         <TeamTitle>Team</TeamTitle>
         <Flex width="100%" justify="space-between" margin="0 0 16px 0">
-          <Select width="200px" name="designs" id="design-select">
-            <option value="">Design</option>
-            <option value="dog">Another design</option>
+          <Select
+            width="200px"
+            name="designs"
+            id="designSelect"
+            onChange={onChangeOptions}
+            value={state.designSelect}
+          >
+            <option value="design">Design</option>
+            <option
+              value="firstDesing"
+              // selected={state.designSelect === "firstDesing"}
+            >
+              First design
+            </option>
+            <option
+              value="secondDesign"
+              // selected={state.designSelect === "secondDesign"}
+            >
+              Second design
+            </option>
           </Select>
 
           <Counter></Counter>
-          <Select width="240px" name="members" id="member-select">
-            <option value="">Who to send the request to</option>
-            <option value="dog">Who else to send the request to</option>
+          <Select
+            width="240px"
+            name="members"
+            id="memberSelect"
+            onChange={onChangeOptions}
+            value={state.memberSelect}
+          >
+            <option value="member">Who to send the request to</option>
+            <option
+              value="firstMember"
+              // selected={state.memberSelect === "firstMember"}
+            >
+              First member
+            </option>
+            <option
+              value="secondMember"
+              // selected={state.memberSelect === "secondMember"}
+            >
+              Second member
+            </option>
           </Select>
         </Flex>
         <Flex
@@ -75,55 +120,79 @@ const Form2 = (props) => {
           margin="0 0 24px 0"
           align="start"
         >
-          <Select width="200px" name="specifics" id="specific-select">
+          <Select
+            width="200px"
+            name="specifics"
+            id="specificSelect"
+            onChange={onChangeOptions}
+            value={state.specificSelect}
+          >
             <option value="">Specific</option>
-            <option value="dog">Another specific</option>
+            <option
+              value="firstSpecific"
+              // selected={state.specificSelect === "firstSpecific"}
+            >
+              First specific
+            </option>
+            <option
+              value="secondSpecific"
+              // selected={state.specificSelect === "secondSpecific"}
+            >
+              Second specific
+            </option>
           </Select>
-          <Area>
-            <Card>
-              Kathryn Murphy
-              <DeleteMark />
-            </Card>
-            <Card>
-              Darrell Steward
-              <DeleteMark />
-            </Card>
-            <Card>
-              Darlene Robertson
-              <DeleteMark />
-            </Card>
-            <AddCard />
-          </Area>
+          <AreaForMembers>
+            {state.members.map(({ id, name }) => {
+              return (
+                <Card key={id} onClick={removeMember}>
+                  {name}
+                  <DeleteMark />
+                </Card>
+              );
+            })}
+            <AddCard onClick={addMember} />
+          </AreaForMembers>
         </Flex>
         <Flex width="100%" justify="space-between">
-          <Button simple>Add</Button>
+          <Button outlined>Add</Button>
           <Button>Send Request</Button>
         </Flex>
         <DashedLine />
         <VotesTitle>Votes</VotesTitle>
         <Flex width="100%" justify="center" margin="0 0 26px 0">
-          <Flex width="394px" justify="space-between">
-            <Radio name="category">All votes</Radio>
-            <Radio name="category">Majority</Radio>
-            <Radio name="category">Veto</Radio>
+          <Flex
+            width="394px"
+            justify="space-between"
+            onClick={onChangeCategory}
+          >
+            {votes.map(({ id, category }) => {
+              return (
+                <Radio
+                  key={id}
+                  name="category"
+                  defaultValue={category}
+                  votes={votes}
+                >
+                  {category}
+                </Radio>
+              );
+            })}
           </Flex>
         </Flex>
         <CheckboxForVoteList>
-          <CheckboxForVoteItem>
-            <CheckboxForVote id="id0" onCheck={onCheck} form={form}>
-              Kathryn Murphy
-            </CheckboxForVote>
-          </CheckboxForVoteItem>
-          <CheckboxForVoteItem>
-            <CheckboxForVote id="id1" onCheck={onCheck} form={form}>
-              Darrell Steward
-            </CheckboxForVote>
-          </CheckboxForVoteItem>
-          <CheckboxForVoteItem>
-            <CheckboxForVote id="id2" onCheck={onCheck} form={form}>
-              Darlene Robertson
-            </CheckboxForVote>
-          </CheckboxForVoteItem>
+          {members.map(({ id, name }) => {
+            return (
+              <CheckboxForVoteItem key={id}>
+                <CheckboxForVote
+                  name={name}
+                  onCheck={onCheck}
+                  members={members}
+                >
+                  {name}
+                </CheckboxForVote>
+              </CheckboxForVoteItem>
+            );
+          })}
         </CheckboxForVoteList>
       </FormBody>
     </form>

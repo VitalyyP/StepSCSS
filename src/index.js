@@ -4,6 +4,7 @@ import { createGlobalStyle } from "styled-components";
 
 import App from "./App";
 import "./index.css";
+import { AppContextProvider } from "./providers";
 
 const Global = createGlobalStyle`
 * {
@@ -17,7 +18,9 @@ const Global = createGlobalStyle`
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Global />
-    <App />
+    <AppContextProvider>
+      <Global />
+      <App />
+    </AppContextProvider>
   </React.StrictMode>
 );

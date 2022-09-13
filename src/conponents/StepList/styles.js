@@ -43,7 +43,8 @@ export const Step = styled.li`
     display: flex;
     align-items: center;
     justify-content: center;
-    color: ${({ primary }) => (primary ? "#424242" : "#ffffff")};
+    font-size: 18px;
+    color: ${({ passed }) => (passed ? "#ffffff" : "#aab4bd")};
     background-color: ${({ passed }) => (passed ? "#4ec970" : "#ecf0f5")};
   }
 `;

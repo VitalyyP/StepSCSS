@@ -12,9 +12,9 @@ export const ButtonStyled = styled.button`
   font-size: 16px;
   line-height: 20px;
   text-align: center;
-
+  cursor: pointer;
   ${(props) =>
-    props.simple &&
+    props.outlined &&
     css`
       color: #505b67;
       border: 2px solid #5a9cff;

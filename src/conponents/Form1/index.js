@@ -1,94 +1,106 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
 
+import { AppContext } from "../../providers";
 import Checkbox from "../Checkbox/";
 import InputTextWithHelperText from "../InputTextWithHelperText";
 import {
   FormBody,
   InputTextList,
   InputTextItem,
-  InputText,
   CheckBoxList,
   CheckBoxItem,
   InputFile,
 } from "./styles";
 
 const Form1 = (props) => {
-  const [form, setForm] = useState({});
-
-  const onSubmit = (e) => {
-    e.preventDefault();
-    props.onChange(form);
-    setForm({
-      ...form,
-      value: "",
-      comment: "",
-    });
-    props.onCloseModalForm();
-  };
+  const { state, dispatch } = useContext(AppContext);
 
   const onChange = (e) => {
-    console.log(e.target);
     const { value, name } = e.target;
-    setForm({
-      ...form,
-      [name]: value,
-    });
+    dispatch({ type: "setText", payload: { name, value } });
   };
 
   const onCheck = (e) => {
-    console.log(e.target.checked);
-    const { name } = e.target;
-
-    setForm({
-      ...form,
-      [name]: e.target.checked,
-    });
+    const name1 = e.target.name;
+    const isChecked1 = e.target.checked;
+    dispatch({ type: "setChecked", payload: { name1, isChecked1 } });
   };
 
   return (
-    <form onSubmit={onSubmit}>
+    // <form onSubmit={onSubmit}>
+    <form>
       <FormBody>
         <InputTextList>
           <InputTextItem>
-            <InputText
-              type="text"
-              name="stageTitle"
-              placeholder="Stage Title"
-              value={form.value}
-              onChange={onChange}
-            />
+            {state.stageTitle ? (
+              <InputTextWithHelperText
+                name="stageTitle"
+                onChange={onChange}
+                value={state.stageTitle}
+                className="focusWithText"
+              >
+                Stage Title
+              </InputTextWithHelperText>
+            ) : (
+              <InputTextWithHelperText
+                name="stageTitle"
+                onChange={onChange}
+                value={state.stageTitle}
+              >
+                Stage Title
+              </InputTextWithHelperText>
+            )}
           </InputTextItem>
           <InputTextItem>
-            <InputText
-              type="text"
-              name="stageSubtitle"
-              placeholder="Stage Subtitle"
-              value={form.value}
-              onChange={onChange}
-            />
+            {state.stageSubtitle ? (
+              <InputTextWithHelperText
+                name="stageSubtitle"
+                onChange={onChange}
+                value={state.stageSubtitle}
+                className="focusWithText"
+              >
+                Stage Subtitle
+              </InputTextWithHelperText>
+            ) : (
+              <InputTextWithHelperText
+                name="stageSubtitle"
+                onChange={onChange}
+                value={state.stageSubtitle}
+              >
+                Stage Subtitle
+              </InputTextWithHelperText>
+            )}
           </InputTextItem>
           <InputTextItem>
-            <InputText
-              type="text"
-              name="stageType"
-              placeholder="Test Task"
-              value={form.value}
-              onChange={onChange}
-            />
-          </InputTextItem>
-          <InputTextItem>
-            <InputTextWithHelperText>Stage Type</InputTextWithHelperText>
+            {state.stageType ? (
+              <InputTextWithHelperText
+                name="stageType"
+                onChange={onChange}
+                value={state.stageType}
+                className="focusWithText"
+              >
+                Stage Type
+              </InputTextWithHelperText>
+            ) : (
+              <InputTextWithHelperText
+                name="stageType"
+                onChange={onChange}
+                value={state.stageType}
+              >
+                Stage Type
+              </InputTextWithHelperText>
+            )}
           </InputTextItem>
         </InputTextList>
         <CheckBoxList>
           <CheckBoxItem>
-            <Checkbox id="canUpload" onCheck={onCheck} form={form}>
+            <Checkbox id="canUpload" onCheck={onCheck} form={state}>
               Candidate can upload files
             </Checkbox>
           </CheckBoxItem>
           <CheckBoxItem>
-            <Checkbox id="canDownload" onCheck={onCheck} form={form}>
+            <Checkbox id="canDownload" onCheck={onCheck} form={state}>
               Candidate can download files
             </Checkbox>
           </CheckBoxItem>

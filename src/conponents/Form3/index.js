@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
 
+import { AppContext } from "../../providers";
 import Radio from "../Radio";
 import Checkbox from "../Checkbox";
 import {
@@ -17,80 +18,103 @@ import {
 import Rate from "../Rate";
 
 const Form3 = (props) => {
-  const [form, setForm] = useState({});
+  const { state, dispatch } = useContext(AppContext);
+  const { categoriesOfRate, nextStage } = state;
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-    props.onChange(form);
-    setForm({
-      ...form,
-      value: "",
-      comment: "",
-    });
-    props.onCloseModalForm();
+  const setConfirmNextStage = (e) => {
+    const value = e.target.value;
+    const changedVotes = nextStage.map((el) => ({
+      ...el,
+      isChecked: el.category === value,
+    }));
+    dispatch({ type: "setConfirmNextStage", payload: changedVotes });
   };
 
   const onChange = (e) => {
-    console.log(e.target);
-    const { value, name } = e.target;
-    setForm({
-      ...form,
-      [name]: value,
-    });
+    const { value } = e.target;
+    dispatch({ type: "setOption", payload: { feedback: value } });
   };
 
   const onCheck = (e) => {
-    console.log(e.target.checked);
-    const { name } = e.target;
+    const name1 = e.target.name;
+    const isChecked1 = e.target.checked;
+    dispatch({ type: "setChecked", payload: { name1, isChecked1 } });
+  };
 
-    setForm({
-      ...form,
-      [name]: e.target.checked,
-    });
+  const setRate = (e) => {
+    if (e.target === e.currentTarget) return;
+    const nameOfRate = e.currentTarget.id;
+    const valueOfRate = e.target.id;
+    const categoriesWithRate = categoriesOfRate.map((el) =>
+      el.name === nameOfRate
+        ? {
+            ...el,
+            rate: valueOfRate,
+          }
+        : el
+    );
+    dispatch({ type: "setRate", payload: categoriesWithRate });
   };
 
   return (
-    <form onSubmit={onSubmit}>
+    <form>
       <FormBody>
         <FeedbackTitle>Feedback</FeedbackTitle>
         <Area>
-          <RadioList>
-            <RadioItem>
-              <Radio>Confirm next stage</Radio>
-            </RadioItem>
-            <RadioItem>
-              <Radio>Not suitable for the next stage</Radio>
-            </RadioItem>
+          <RadioList onClick={setConfirmNextStage}>
+            {nextStage.map(({ id, category }) => {
+              return (
+                <RadioItem key={id}>
+                  <Radio
+                    name="category"
+                    defaultValue={category}
+                    votes={nextStage}
+                  >
+                    {category}
+                  </Radio>
+                </RadioItem>
+              );
+            })}
           </RadioList>
-          <CheckboxList>
-            <CheckboxItem>
-              <Checkbox id="notdue" onCheck={onCheck} form={form}>
-                Not suitable due to lack of specialized experience
-              </Checkbox>
-            </CheckboxItem>
-            <CheckboxItem>
-              <Checkbox id="notfit" onCheck={onCheck} form={form}>
-                Did not fit in soft skills
-              </Checkbox>
-            </CheckboxItem>
-            <CheckboxItem>
-              <Checkbox id="bedtest" onCheck={onCheck} form={form}>
-                Bad test
-              </Checkbox>
-            </CheckboxItem>
-            <CheckboxItem>
-              <Checkbox id="other" onCheck={onCheck} form={form}>
-                Other
-              </Checkbox>
-            </CheckboxItem>
-          </CheckboxList>
+          {state.nextStage[1].isChecked && (
+            <CheckboxList>
+              <CheckboxItem>
+                <Checkbox id="lackExperience" onCheck={onCheck} form={state}>
+                  Not suitable due to lack of specialized experience
+                </Checkbox>
+              </CheckboxItem>
+              <CheckboxItem>
+                <Checkbox id="notFitSofftkills" onCheck={onCheck} form={state}>
+                  Did not fit in soft skills
+                </Checkbox>
+              </CheckboxItem>
+              <CheckboxItem>
+                <Checkbox id="bedTest" onCheck={onCheck} form={state}>
+                  Bad test
+                </Checkbox>
+              </CheckboxItem>
+              <CheckboxItem>
+                <Checkbox id="other" onCheck={onCheck} form={state}>
+                  Other
+                </Checkbox>
+              </CheckboxItem>
+            </CheckboxList>
+          )}
         </Area>
         <RateList>
-          <Rate>Team Player</Rate>
-          <Rate>Professional Skills</Rate>
-          <Rate>Parameter #3</Rate>
+          {categoriesOfRate.map(({ id, name, rate }) => {
+            return (
+              <Rate key={id} onClick={setRate} rate={rate}>
+                {name}
+              </Rate>
+            );
+          })}
         </RateList>
-        <Feedback placeholder="Your feedback" />
+        <Feedback
+          placeholder="Your feedback"
+          onChange={onChange}
+          value={state.feedback}
+        />
       </FormBody>
     </form>
   );
