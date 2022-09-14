@@ -22,8 +22,4 @@ const CheckboxForVote = ({ name, onCheck, members, children }) => {
   );
 };
 
-// Form.propTypes = {
-//   onChange: PropTypes.func,
-// };
-
 export default CheckboxForVote;

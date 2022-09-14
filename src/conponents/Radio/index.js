@@ -1,6 +1,6 @@
 import React from "react";
 
-import { CheckboxContainer, InputRadio, LabelRadio } from "./styles";
+import { InputRadio, LabelRadio } from "./styles";
 
 const Radio = ({ children, votes, ...rest }) => {
   const isChecked = votes.find((el) => el.category === children).isChecked;
@@ -11,8 +11,5 @@ const Radio = ({ children, votes, ...rest }) => {
     </LabelRadio>
   );
 };
-// Form.propTypes = {
-//   onChange: PropTypes.func,
-// };
 
 export default Radio;

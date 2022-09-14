@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import icon from "../../images/icons/arrowdown.svg";
 
 export const FormBody = styled.div`
   position: relative;

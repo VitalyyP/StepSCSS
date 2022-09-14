@@ -11,8 +11,5 @@ const Select = ({ children, width, onChange, id }) => {
     </SelectContainer>
   );
 };
-// Form.propTypes = {
-//   onChange: PropTypes.func,
-// };
 
 export default Select;

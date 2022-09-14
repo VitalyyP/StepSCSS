@@ -1,5 +1,4 @@
-import React, { useState, useContext } from "react";
-import PropTypes from "prop-types";
+import React, { useContext } from "react";
 
 import { AppContext } from "../../providers";
 import Radio from "../Radio";
@@ -17,7 +16,7 @@ import {
 } from "./styles";
 import Rate from "../Rate";
 
-const Form3 = (props) => {
+const Form3 = () => {
   const { state, dispatch } = useContext(AppContext);
   const { categoriesOfRate, nextStage } = state;
 
@@ -119,8 +118,5 @@ const Form3 = (props) => {
     </form>
   );
 };
-// Form3.propTypes = {
-//   onChange: PropTypes.func,
-// };
 
 export default Form3;

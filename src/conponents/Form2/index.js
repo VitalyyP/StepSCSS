@@ -1,5 +1,4 @@
-import React, { useState, useContext } from "react";
-import PropTypes from "prop-types";
+import React, { useContext } from "react";
 
 import { AppContext } from "../../providers/";
 import Flex from "../Flex";
@@ -198,8 +197,5 @@ const Form2 = (props) => {
     </form>
   );
 };
-// Form1.propTypes = {
-//   onChange: PropTypes.func,
-// };
 
 export default Form2;

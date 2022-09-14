@@ -7,7 +7,6 @@ export const List = styled.ul`
   padding: 0;
   counter-reset: my-counter; /* Задаём имя счетчика */
 `;
-List.displayName = "List";
 
 export const Step = styled.li`
   font-size: 16px;
@@ -48,4 +47,3 @@ export const Step = styled.li`
     background-color: ${({ passed }) => (passed ? "#4ec970" : "#ecf0f5")};
   }
 `;
-Step.displayName = "Step";

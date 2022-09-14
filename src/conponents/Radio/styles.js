@@ -1,7 +1,4 @@
 import styled from "styled-components";
-import icon from "../../images/icons/checkbox.svg";
-
-export const CheckboxContainer = styled.div``;
 
 export const InputRadio = styled.input.attrs({ type: "Radio" })`
   appearance: none;

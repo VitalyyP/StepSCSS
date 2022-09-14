@@ -1,4 +1,4 @@
-import React, { startTransition } from "react";
+import React from "react";
 
 import { Wrapper, Title, Stars, Star } from "./styles";
 
@@ -16,4 +16,5 @@ const Rate = ({ children, onClick, rate }) => {
     </Wrapper>
   );
 };
+
 export default Rate;

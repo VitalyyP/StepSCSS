@@ -1,5 +1,4 @@
-import React, { useState, useContext } from "react";
-import PropTypes from "prop-types";
+import React, { useContext } from "react";
 
 import { AppContext } from "../../providers";
 import Checkbox from "../Checkbox/";
@@ -13,7 +12,7 @@ import {
   InputFile,
 } from "./styles";
 
-const Form1 = (props) => {
+const Form1 = () => {
   const { state, dispatch } = useContext(AppContext);
 
   const onChange = (e) => {
@@ -28,7 +27,6 @@ const Form1 = (props) => {
   };
 
   return (
-    // <form onSubmit={onSubmit}>
     <form>
       <FormBody>
         <InputTextList>
@@ -110,8 +108,5 @@ const Form1 = (props) => {
     </form>
   );
 };
-// Form1.propTypes = {
-//   onChange: PropTypes.func,
-// };
 
 export default Form1;

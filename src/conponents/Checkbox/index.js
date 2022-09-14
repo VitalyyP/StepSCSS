@@ -12,8 +12,5 @@ const Checkbox = ({ id, onCheck, form, children }) => {
     </CheckboxContainer>
   );
 };
-// Form.propTypes = {
-//   onChange: PropTypes.func,
-// };
 
 export default Checkbox;

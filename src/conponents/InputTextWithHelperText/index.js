@@ -1,6 +1,6 @@
 import React from "react";
 
-import { InputText, LabelText, HelperText, Wrapper } from "./styles";
+import { InputText, LabelText, HelperText } from "./styles";
 import "./styles.css";
 
 const InputTextWithHelperText = ({ children, ...rest }) => {
@@ -21,4 +21,5 @@ const InputTextWithHelperText = ({ children, ...rest }) => {
     </LabelText>
   );
 };
+
 export default InputTextWithHelperText;
