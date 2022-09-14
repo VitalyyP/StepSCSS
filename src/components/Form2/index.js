@@ -20,7 +20,7 @@ import {
   CheckboxForVoteItem,
 } from "./styles";
 
-const Form2 = (props) => {
+const Form2 = () => {
   const { state, dispatch } = useContext(AppContext);
   const votes = state.votes;
   const members = state.members;
@@ -77,8 +77,8 @@ const Form2 = (props) => {
           >
             <option value="design">Design</option>
             <option
-              value="firstDesing"
-              // selected={state.designSelect === "firstDesing"}
+              value="firstDesign"
+              // selected={state.designSelect === "firstDesign"}
             >
               First design
             </option>
@@ -89,8 +89,7 @@ const Form2 = (props) => {
               Second design
             </option>
           </Select>
-
-          <Counter></Counter>
+          <Counter />
           <Select
             width="240px"
             name="members"

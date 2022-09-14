@@ -83,7 +83,7 @@ const Form3 = () => {
                 </Checkbox>
               </CheckboxItem>
               <CheckboxItem>
-                <Checkbox id="notFitSofftkills" onCheck={onCheck} form={state}>
+                <Checkbox id="notFitSoftSkills" onCheck={onCheck} form={state}>
                   Did not fit in soft skills
                 </Checkbox>
               </CheckboxItem>

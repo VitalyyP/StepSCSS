@@ -2,14 +2,14 @@ import React, { useState, useContext } from "react";
 
 import { AppContext } from "./providers";
 import Home from "./pages/Home";
-import Modal from "../src/conponents/Modal";
-import Title from "./conponents/Title";
-import StepList from "./conponents/StepList";
-import Form1 from "./conponents/Form1";
-import Form2 from "./conponents/Form2";
-import Form3 from "./conponents/Form3";
-import Button from "./conponents/Button";
-import Flex from "./conponents/Flex";
+import Modal from "../src/components/Modal";
+import Title from "./components/Title";
+import StepList from "./components/StepList";
+import Form1 from "./components/Form1";
+import Form2 from "./components/Form2";
+import Form3 from "./components/Form3";
+import Button from "./components/Button";
+import Flex from "./components/Flex";
 
 function App() {
   const [showModal, setShowModal] = useState(true);

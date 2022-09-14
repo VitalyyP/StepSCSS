@@ -11,7 +11,6 @@ export const Overlay = styled.div`
   align-items: center;
   background-color: rgba(0, 0, 0, 0.4);
 `;
-Overlay.displayName = "Overlay";
 
 export const ModalContent = styled.div`
   position: relative;
@@ -20,7 +19,6 @@ export const ModalContent = styled.div`
   padding: 40px 32px;
   border-radius: 20px;
 `;
-ModalContent.displayName = "ModalContent";
 
 export const ModalClose = styled.div`
   position: absolute;
@@ -35,4 +33,3 @@ export const ModalClose = styled.div`
   line-height: 12px;
   text-transform: uppercase;
 `;
-ModalClose.displayName = "ModalClose";
