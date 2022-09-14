@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "07d956ae3b50ceb92ad9",
-    "url": "/StepSCSS/static/css/main.ea7a0334.chunk.css"
+    "revision": "6ac3207d46dc5e7310af",
+    "url": "/StepSCSS/static/css/main.c351ffc8.chunk.css"
   },
   {
-    "revision": "07d956ae3b50ceb92ad9",
-    "url": "/StepSCSS/static/js/main.07d956ae.chunk.js"
+    "revision": "6ac3207d46dc5e7310af",
+    "url": "/StepSCSS/static/js/main.6ac3207d.chunk.js"
   },
   {
     "revision": "3a1248d4120f4a4bec72",
@@ -40,7 +40,7 @@ self.__precacheManifest = [
     "url": "/StepSCSS/static/media/Inter-VariableFont_slnt,wght.ba8d1544.ttf"
   },
   {
-    "revision": "a9aa1e8e50621d6951787338e5f46111",
+    "revision": "426da42126cc7796826906487bd839f0",
     "url": "/StepSCSS/index.html"
   }
 ];
