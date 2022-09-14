@@ -1,15 +1,15 @@
 self.__precacheManifest = [
   {
-    "revision": "106b650a6cc053d67ec7",
+    "revision": "07d956ae3b50ceb92ad9",
     "url": "/StepSCSS/static/css/main.ea7a0334.chunk.css"
   },
   {
-    "revision": "106b650a6cc053d67ec7",
-    "url": "/StepSCSS/static/js/main.106b650a.chunk.js"
+    "revision": "07d956ae3b50ceb92ad9",
+    "url": "/StepSCSS/static/js/main.07d956ae.chunk.js"
   },
   {
-    "revision": "1977a96c3b19cede03a3",
-    "url": "/StepSCSS/static/js/1.1977a96c.chunk.js"
+    "revision": "3a1248d4120f4a4bec72",
+    "url": "/StepSCSS/static/js/1.3a1248d4.chunk.js"
   },
   {
     "revision": "ed35a8eb4aeb99143b9f",
@@ -20,12 +20,12 @@ self.__precacheManifest = [
     "url": "/StepSCSS/static/media/checkbox.228d4ef1.svg"
   },
   {
-    "revision": "fe96dba10497630dfaf9405eb6e666b6",
-    "url": "/StepSCSS/static/media/arrowdown.fe96dba1.svg"
-  },
-  {
     "revision": "692bae8c3367557ed533ff377f6ec2b3",
     "url": "/StepSCSS/static/media/starFilled.692bae8c.svg"
+  },
+  {
+    "revision": "fe96dba10497630dfaf9405eb6e666b6",
+    "url": "/StepSCSS/static/media/arrowdown.fe96dba1.svg"
   },
   {
     "revision": "bdc802420b6eef078ce2000a8bf432b9",
@@ -40,7 +40,7 @@ self.__precacheManifest = [
     "url": "/StepSCSS/static/media/Inter-VariableFont_slnt,wght.ba8d1544.ttf"
   },
   {
-    "revision": "a98d89f2fe86d46d0efd57d5bf8c57d3",
+    "revision": "a9aa1e8e50621d6951787338e5f46111",
     "url": "/StepSCSS/index.html"
   }
 ];
